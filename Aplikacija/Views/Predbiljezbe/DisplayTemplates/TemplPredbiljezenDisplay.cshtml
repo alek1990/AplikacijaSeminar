@@ -1,0 +1,13 @@
+﻿@model bool?
+@if (Model == true)
+{
+    @:<text style="color:limegreen">Prihvaćen</text>
+}
+else if (Model == false)
+{
+    @:<text style="color:red">Odbijen</text>
+}
+else
+{
+    @:<text style="color:dimgrey">Neobrađen</text>
+}

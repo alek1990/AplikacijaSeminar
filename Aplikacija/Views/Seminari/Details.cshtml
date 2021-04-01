@@ -1,0 +1,77 @@
+﻿@model Aplikacija.Models.Seminar
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalji seminara</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumDodavanja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumDodavanja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumPocetkaSeminara)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumPocetkaSeminara)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojPolaznika)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BrojPolaznika)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxBrojPolaznika)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxBrojPolaznika)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Popunjen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Popunjen)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Zatvaranje)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Zatvaranje)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Uredi", "Edit", new { id = Model.IdSeminar }) |
+    @Html.ActionLink("Seminari", "Index")
+</p>

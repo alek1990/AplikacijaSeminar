@@ -1,0 +1,114 @@
+﻿@model IEnumerable<Aplikacija.Models.Seminar>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*CSS za button novi*@
+<style>
+    a.novi:link, a.novi:visited {
+        background-color: #f44336;
+        color: white;
+        padding: 5px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    a.novi:hover, a.novi:active {
+        background-color: red;
+    }
+</style>
+
+<div>
+    @if (TempData["Promjene"] != null)
+    {
+        <h4 style="font-weight:bold">@TempData["Promjene"]</h4>
+    }
+</div>
+<hr />
+<div>
+    @Html.Partial("_PretragaPartial")
+</div>
+<hr />
+<p>
+    @Html.ActionLink("Novi", "Create", null, new { @class = "novi" })
+</p>
+
+@if (!Model.Any())
+{
+    <hr />
+    <h5>Nema nijednog seminara za prikaz.</h5>
+
+}
+
+else
+{
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatumDodavanja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatumPocetkaSeminara)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrojPolaznika)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaxBrojPolaznika)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Popunjen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zatvaranje)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td width="15%">
+                @Html.ActionLink("Uredi", "Edit", new { id = item.IdSeminar })
+                | @Html.ActionLink("Detalji", "Details", new { id = item.IdSeminar })
+                | @Html.ActionLink("Izbriši", "Delete", new { id = item.IdSeminar })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatumDodavanja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatumPocetkaSeminara)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrojPolaznika)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxBrojPolaznika)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Popunjen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zatvaranje)
+            </td>
+        </tr>
+    }
+
+</table>
+}

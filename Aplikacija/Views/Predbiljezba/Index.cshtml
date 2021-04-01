@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Aplikacija.Models.Seminar>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    @if (TempData["Predbiljezba"] != null)
+    {
+        <h4 style="font-weight:bold">@TempData["Predbiljezba"]</h4>
+    }
+</div>
+<hr />
+<div>
+    @Html.Partial("_PretragaPartial")
+</div>
+
+@if (!Model.Any())
+{
+    <hr />
+    <h5>Nema nijednog seminara za prijavu.</h5>
+
+}
+
+else
+{
+    <table class="table">
+        <tr>
+            <th></th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Naziv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatumPocetkaSeminara)
+            </th>
+
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink("Odaberi", "PredbiljeziSe", new { id = item.IdSeminar })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Naziv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Opis)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatumPocetkaSeminara)
+                </td>
+
+
+            </tr>
+        }
+
+    </table>
+
+}
+
+

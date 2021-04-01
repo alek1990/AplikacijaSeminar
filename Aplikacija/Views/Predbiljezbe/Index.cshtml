@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Aplikacija.Models.Predbiljezba>
+
+@{
+    ViewBag.Title = "Index";
+
+}
+
+
+<div>
+    @if (TempData["Message"] != null)
+    {
+        <h4 style="font-weight:bold">@TempData["Message"]</h4>
+    }
+</div>
+
+
+<hr />
+<div>
+    @Html.Partial("_PretragaPartial")
+</div>
+<div>
+    @Html.Partial("_MeniPartial")
+</div>
+
+@if (!Model.Any())
+{
+    <hr />
+    <h5>Nema nijedne predbilježbe za prikaz.</h5>
+
+}
+
+else
+{
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>
+                <Label>Seminar</Label>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Datum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adresa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kontakt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Napomena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Predbiljezen)
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink("Odaberi", "OdaberiPredbiljezbu", new { id = item.IdPredbiljezba, idS = item.SeminarId })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Seminar.Naziv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prezime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adresa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kontakt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Napomena)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Predbiljezen)
+                </td>
+            </tr>
+        }
+
+    </table>
+}

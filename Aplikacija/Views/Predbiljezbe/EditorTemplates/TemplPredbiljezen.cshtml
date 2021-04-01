@@ -1,0 +1,10 @@
+﻿@model bool?
+@{
+    var selectList = new List<SelectListItem>
+{
+new SelectListItem {Text = "Neobrađen", Value = String.Empty, Selected = !Model.HasValue},
+new SelectListItem {Text = "Prihvaćen", Value = "true", Selected = Model.HasValue && Model.Value},
+new SelectListItem {Text = "Odbijen", Value = "false", Selected = Model.HasValue && !Model.Value}
+};
+}
+@Html.DropDownListFor(m => m, selectList, ViewData["htmlAttributes"])
